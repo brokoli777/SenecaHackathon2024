@@ -5,51 +5,9 @@ export default function Gallery() {
   return (
     <>
       <h3 className="font-semibold md:px-4 md:pb-5">Photos</h3>
-      <div className="md:block hidden container mx-auto md:px-5">
-        <div className="-m-1 flex flex-wrap md:-m-2">
-          <div className="flex flex-row">
-            <div className="w-2/3 p-1 md:p-2">
-              <GalleryContent />
-            </div>
-            <div className="flex flex-col w-1/3">
-              <div className="w-full p-1 md:p-2">
-                <GalleryContent />
-              </div>
-              <div className="w-full p-1 md:p-2">
-                <GalleryContent />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap">
-            <div className="w-1/3 p-1 md:p-2">
-              <GalleryContent />
-            </div>
-            <div className="w-2/3 p-1 md:p-2">
-              <GalleryContent />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Carousel className=" mx-auto md:hidden pb-5">
-        <Carousel.Item>
-          <img
-            className="w-full object-cover object-center"
-            src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-            alt="First slide"
-          />
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <img
-            className="w-full object-cover object-center"
-            src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
-            alt="First slide"
-          />
-        </Carousel.Item>
-      </Carousel>
-
+      
+      <GalleryContent/>
+      
       <h3 className="font-semibold md:px-4 md:pt-10 md:pb-5">Videos</h3>
 
       {/* max-w-[900px] */}

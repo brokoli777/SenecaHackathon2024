@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Carousel } from "react-bootstrap";
-import GalleryCard from "./GalleryCard";
+import GalleryImage from "./GalleryImage";
 import { storage } from "../../model/firebase/config";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
+// import { get } from "http";
 
 const Gallery = () => {
   const [photos, setPhotos] = useState([]);
@@ -26,23 +27,81 @@ const Gallery = () => {
     fetchPhotos();
   }, []);
 
+  var photoIndex = 0;
+
+  const getPhoto = () => {
+
+    if (photos.length === 0) {
+      return "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp";
+    }
+
+    if (photoIndex >= photos.length) {
+      photoIndex = 0;
+    }
+    return photos[photoIndex++].url;
+  }
+
   return (
-    <div>
-      <Carousel>
-        {photos.map((photo) => (
-          <Carousel.Item key={photo.id}>
-            <img
-              className="d-block w-100"
-              src={photo.url}
-              alt={photo.title || "Image"}
-            />
-            <Carousel.Caption>
-              {photo.title && <h3>{photo.title}</h3>}
-            </Carousel.Caption>
-          </Carousel.Item>
-        ))}
+    
+    <>
+      <div className="md:block hidden container mx-auto md:px-5">
+          <div className="-m-1 flex flex-wrap md:-m-2">
+            <div className="flex flex-row">
+              <div className="w-2/3 p-1 md:p-2">
+                <GalleryImage url={getPhoto()}/>
+              </div>
+              <div className="flex flex-col w-1/3">
+                <div className="w-full p-1 md:p-2">
+                  <GalleryImage url={getPhoto()}/>
+                </div>
+                <div className="w-full p-1 md:p-2">
+                  <GalleryImage url={getPhoto()}/>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap">
+              <div className="w-1/3 p-1 md:p-2">
+                <GalleryImage url={getPhoto()}/>
+              </div>
+              <div className="w-2/3 p-1 md:p-2">
+                <GalleryImage url={getPhoto()}/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Carousel className=" mx-auto md:hidden pb-5 h-50">
+          {photos.map((photo) => (
+            <Carousel.Item key={photo.id}>
+              <img
+                className="w-full  object-cover object-center"
+                src={photo.url}
+                alt="First slide"
+                height="500"
+              />
+            </Carousel.Item>
+        
+          ))}
+        {/* <Carousel.Item>
+          <img
+            className="w-full object-cover object-center"
+            src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+            alt="First slide"
+          />
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <img
+            className="w-full object-cover object-center"
+            src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
+            alt="First slide"
+          />
+        </Carousel.Item> */}
       </Carousel>
-    </div>
+    </>
+      
+    
   );
 };
 

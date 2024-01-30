@@ -3,7 +3,6 @@ import { Carousel } from "react-bootstrap";
 import GalleryImage from "./GalleryImage";
 import { storage } from "../../model/firebase/config";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
-// import { get } from "http";
 
 const Gallery = () => {
   const [photos, setPhotos] = useState([]);
@@ -32,7 +31,7 @@ const Gallery = () => {
   const getPhoto = () => {
 
     if (photos.length === 0) {
-      return "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp";
+      return "";
     }
 
     if (photoIndex >= photos.length) {
@@ -71,33 +70,19 @@ const Gallery = () => {
           </div>
         </div>
 
-        <Carousel className=" mx-auto md:hidden pb-5 h-50">
+        <Carousel className=" mx-auto md:hidden pb-5">
           {photos.map((photo) => (
             <Carousel.Item key={photo.id}>
               <img
-                className="w-full  object-cover object-center"
+                className="w-full object-cover object-center"
                 src={photo.url}
                 alt="First slide"
-                height="500"
+                height="300px"
               />
             </Carousel.Item>
         
           ))}
-        {/* <Carousel.Item>
-          <img
-            className="w-full object-cover object-center"
-            src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-            alt="First slide"
-          />
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <img
-            className="w-full object-cover object-center"
-            src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
-            alt="First slide"
-          />
-        </Carousel.Item> */}
+        
       </Carousel>
     </>
       

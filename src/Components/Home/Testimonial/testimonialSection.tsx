@@ -6,7 +6,7 @@ export default function TestimonialSection({
   testimonial: Testimonial;
 }) {
   return (
-    <div className="mx-1 flex bg-red-600 md:min-h-[380px] min-h-[480px]   rounded-xl flex-col mt-[100px] flex-wrap max-w-1/3">
+    <div className="mx-1 flex bg-red-600 md:min-h-[380px] min-h-[480px] h-[500px]   rounded-xl flex-col mt-[100px] flex-wrap max-w-1/3">
       {testimonial.headshot ? (
         <img
           className="border-5 border-solid border-white drop-shadow-2xl absolute left-1/2 ml-[-85px] mt-[-100px] h-[180px] w-[180px] rounded-full object-cover object-top"
@@ -28,7 +28,7 @@ export default function TestimonialSection({
         {testimonial.review}
       </div>
 
-      <div className="text-white font-bold absolute bottom-12 left-12 mt-4 ml-10 md:mx-auto">
+      <div className="text-white font-bold  bottom-12 left-12 mt-4 ml-10 md:mx-auto">
         - {testimonial.name}
       </div>
       <svg
